@@ -1,8 +1,9 @@
 <h3 class="title" style="padding-bottom: 12px">Weather</h3>
 <p class="subtitle" style="margin: 0">See the weather anywhere</p>
 <div class="container center">
-    <mat-form-field class="padding" style="width: 100%" (keyup.enter)="fetchWeather()">
-      <input autofocus matInput placeholder="TYPE A CITY" (input)="onChange($event.target.value)">
+    <mat-form-field class="padding" style="width: 100%" (keyup.enter)="fetchWeather($event.target.value)">
+      <input id="input" matInput placeholder="TYPE A CITY" (input)="onChange($event.target.value)">
     </mat-form-field>
-    <button mat-button>OK</button>
-</div>  
+
+    <h2 class="title">{{ city ? city.name + ", " + city.country : "" }}</h2>
+</div>

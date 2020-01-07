@@ -1,5 +1,11 @@
+@import "@angular/material/_theming.scss";
+@include mat-core();
+
 ::ng-deep .mat-input-element {
     font-size: 72px !important;
     font-weight: 50;
     height: 100px !important;
+
+    color: gray !important;
+    font-weight: 50 !important;
 }
