@@ -1,4 +1,50 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import "@angular/material/_theming.scss";
+
+@include mat-core();
+
+$primary-light: mat-palette($mat-teal, 50);
+$primary: mat-palette($mat-teal, 500); 
+$accent:  mat-palette($mat-light-green, A100);
+$theme: mat-light-theme($primary, $accent);
+
+@include angular-material-theme($theme);
+
 html, body { height: 100%; }
+
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.center {
+    text-align: center;
+}
+
+.padding{
+    padding-top: 24px; 
+    padding-bottom: 24px 
+}
+
+.title {
+    font-family: Roboto,"Helvetica Neue",sans-serif;
+    font-size: 36px;
+    font-weight: 200;
+    margin: 0px;
+    padding-top: 36px;
+    padding-bottom: 36px;  
+    color: mat_color($primary);
+}
+.subtitle {
+    font-family: Roboto,"Helvetica Neue",sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    color: gray;
+}
+
+.primary {
+    color: mat_color($primary);
+    background-color: mat_color($primary);
+}
+
+.toolbar-text {
+    font-weight: 100;
+}

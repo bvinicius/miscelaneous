@@ -1,3 +1,7 @@
-<div class="container">
-    <h1>weather</h1>
-</div>
+<h3 class="title">Weather now</h3>
+<div class="container center">
+    <mat-form-field class="padding" style="width: 100%">
+      <input autofocus matInput placeholder="TYPE A CITY" (input)="onChange($event.target.value)">
+    </mat-form-field>
+    <button mat-button>OK</button>
+</div>  

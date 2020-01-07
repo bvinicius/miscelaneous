@@ -8,7 +8,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { FlexLayoutModule } from '@angular/flex-layout'
 
-import { MatToolbarModule, MatIconModule, MatButtonModule, MatSidenavModule, MatListModule } from '@angular/material';
+import { MatToolbarModule, MatIconModule, MatButtonModule, MatSidenavModule, MatListModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import { HttpClientModule } from '@angular/common/http'
 import { HomeComponent } from './home/home.component';
 import { WeatherComponent } from './weather/weather.component'
 
@@ -28,7 +29,10 @@ import { WeatherComponent } from './weather/weather.component'
     MatButtonModule,
     RouterModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    MatFormFieldModule,
+    MatInputModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
