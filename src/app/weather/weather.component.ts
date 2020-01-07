@@ -27,6 +27,10 @@ export class WeatherComponent implements OnInit {
     )  
   }
 
+  fetchWeather() {
+    console.log('fetched')
+  }
+
   fetchCountries() {
     
   }
