@@ -44,21 +44,23 @@ export class WeatherComponent implements OnInit {
         this.city = {
           name: res.name,
           country: res.sys.country,
-          temperature: res.main.temp
+          temperature: res.main.temp,
+          feelsLike: res.main.feels_like,
+          weather: res.weather[0].description 
         }
       })
   }
 
-    onChange(value:string) {
-    const term = value.toLowerCase()
-    this.subscriptions.push(
-      this.http.get('')
-        .subscribe((res:any) => {
-          this.countries = res
-          console.log(res)
-        }, error => {})
-    )  
-  }
+  onChange(value:string) {
+  const term = value.toLowerCase()
+  this.subscriptions.push(
+    this.http.get('')
+      .subscribe((res:any) => {
+        this.countries = res
+        console.log(res)
+      }, error => {})
+  )  
+}
 
   ngOnDestroy() {
     this.subscriptions.forEach(s => {s.unsubscribe()})
