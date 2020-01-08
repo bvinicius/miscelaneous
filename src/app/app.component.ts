@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 
 import { MatSidenav } from '@angular/material'
 import { Router } from '@angular/router';
+import { LoaderService } from './shared/loader.service';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,7 @@ export class AppComponent {
 
   title: 'Miscelaneous'  
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private loader: LoaderService) {
   }
 
   toggleSidenav() {

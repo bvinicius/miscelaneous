@@ -35,6 +35,7 @@
         </button>
         <h3 class="toolbar-text">Miscelaneous</h3>    
       </mat-toolbar>
+      <mat-progress-bar style="position: absolute" mode="indeterminate" *ngIf="loader.loading()"></mat-progress-bar>
 
       <div class="container fit-content">
         <router-outlet></router-outlet>

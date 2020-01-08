@@ -6,7 +6,7 @@
     </mat-form-field>
 
     <h2 class="title">{{ city ? city.name + ", " + city.country : "" }}</h2>
-    <h3 class="subtitle">{{ city ? city.temperature + 'ºC. Feels like ' + city.feelsLike + 'ºC!' : '' }}</h3>
+    <h3 class="subtitle">{{ city ? city.temperature + 'ºC. Feels like ' + city.feelsLike + 'ºC.' : '' }}</h3>
 
-    <h3 class="subtitle">Today: {{ city ? city.weather : "" }}</h3>
+    <h3 class="subtitle">{{ city ? 'Today: ' + city.weather : "" }}</h3>
 </div>

@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, Input, ViewChildren } from '@angular/core
 import { HttpClient } from '@angular/common/http'
 import { Observable, Subscription } from 'rxjs';
 import { MatInput } from '@angular/material';
+import { LoaderService } from '../shared/loader.service';
 
 @Component({
   selector: 'app-weather',
@@ -15,7 +16,7 @@ export class WeatherComponent implements OnInit {
   city: any
 
   @ViewChild(MatInput, {static: false}) input: MatInput;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private loader: LoaderService) { }
 
   ngOnInit() {}
 
@@ -24,6 +25,7 @@ export class WeatherComponent implements OnInit {
   }
 
   fetchWeather(city:string) {
+    this.loader.start()
     this.input.value = ''
 
     const term = city
@@ -40,13 +42,14 @@ export class WeatherComponent implements OnInit {
         }
       })
       .subscribe((res:any) => {
+        this.loader.stop()
         console.log(res)
         this.city = {
           name: res.name,
           country: res.sys.country,
-          temperature: res.main.temp,
+          temperature: res.main.temp, 
           feelsLike: res.main.feels_like,
-          weather: res.weather[0].description 
+          weather: res.weather[0].description
         }
       })
   }

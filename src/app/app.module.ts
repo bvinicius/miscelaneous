@@ -8,10 +8,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { FlexLayoutModule } from '@angular/flex-layout'
 
-import { MatToolbarModule, MatIconModule, MatButtonModule, MatSidenavModule, MatListModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import { MatToolbarModule, MatIconModule, MatButtonModule, MatSidenavModule, MatListModule, MatFormFieldModule, MatInputModule, MatProgressBarModule } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http'
 import { HomeComponent } from './home/home.component';
 import { WeatherComponent } from './weather/weather.component'
+import { SharedModule } from './shared/shared.module'
 
 @NgModule({
   declarations: [
@@ -32,7 +33,9 @@ import { WeatherComponent } from './weather/weather.component'
     MatListModule,
     MatFormFieldModule,
     MatInputModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
