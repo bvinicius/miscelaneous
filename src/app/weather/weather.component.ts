@@ -60,7 +60,7 @@ export class WeatherComponent implements OnInit {
     if (value.length >= 3) {
       const term = value.toLowerCase();
 
-      this.http.get(`https://secure.geobytes.com/AutoCompleteCity?key=7c756203dbb38590a66e01a5a3e1ad96&q=${term}&sort=size&limit=5`)
+      this.http.get(`https://secure.geobytes.com/AutoCompleteCity?key=7c756203dbb38590a66e01a5a3e1ad96&callback=?&q=${term}&sort=size&limit=5`)
       .subscribe((res:any) => {
         this.options = res
       })

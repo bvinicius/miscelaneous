@@ -12,13 +12,15 @@ import { MatToolbarModule, MatIconModule, MatButtonModule, MatSidenavModule, Mat
 import { HttpClientModule } from '@angular/common/http'
 import { HomeComponent } from './home/home.component';
 import { WeatherComponent } from './weather/weather.component'
-import { SharedModule } from './shared/shared.module'
+import { SharedModule } from './shared/shared.module';
+import { SynthesizerComponent } from './synthesizer/synthesizer.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    WeatherComponent
+    WeatherComponent,
+    SynthesizerComponent
   ],
   imports: [
     BrowserModule,
