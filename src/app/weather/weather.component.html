@@ -3,6 +3,11 @@
 <div class="container center">
     <mat-form-field class="padding" style="width: 100%" (keyup.enter)="fetchWeather($event.target.value)">
       <input id="input" matInput placeholder="TYPE A CITY" (input)="onChange($event.target.value)">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of options" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
     </mat-form-field>
 
     <h2 class="title">{{ city ? city.name + ", " + city.country : "" }}</h2>

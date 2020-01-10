@@ -11,9 +11,9 @@ import { LoaderService } from '../shared/loader.service';
 })
 export class WeatherComponent implements OnInit {
   subscriptions: Subscription[] = []
-  countries: String[] = []
-
   city: any
+
+  options: string[] = []
 
   @ViewChild(MatInput, {static: false}) input: MatInput;
   constructor(private http: HttpClient, private loader: LoaderService) { }
@@ -29,12 +29,12 @@ export class WeatherComponent implements OnInit {
     this.input.value = ''
 
     const term = city
-      .split(' ')
-      .join('+')
+                .split(' ')
+                .join('+')
 
     console.log(term)
     
-    this.http.get(`https://community-open-weather-map.p.rapidapi.com/weather?q=${term}&units=metric`, 
+    this.http.get(`https://community-open-weather-map.p.rapidapi.com/weather?q=${term}&units=metric`,
       {
         headers: {	
           "x-rapidapi-host": "community-open-weather-map.p.rapidapi.com",
@@ -55,14 +55,22 @@ export class WeatherComponent implements OnInit {
   }
 
   onChange(value:string) {
-  const term = value.toLowerCase()
-  this.subscriptions.push(
-    this.http.get('')
-      .subscribe((res:any) => {
-        this.countries = res
-        console.log(res)
-      }, error => {})
-  )  
+  // if (value.length % 3 === 0) {
+  //   const term = value.toLowerCase()
+  //   this.loader.start()
+  //   this.subscriptions.push(
+  //     this.http.get(`https://andruxnet-world-cities-v1.p.rapidapi.com/?query=${term}&searchby=city`, {
+  //       headers: {
+  //         "x-rapidapi-host": "andruxnet-world-cities-v1.p.rapidapi.com",
+  //         "x-rapidapi-key": "dac1bfeac6msh81fea4f48af0f77p162317jsn2d9f313ea36f"
+  //       }
+  //     })
+  //       .subscribe((res:any) => {
+  //         this.loader.stop()
+  //         console.log(res)
+  //       }, error => {console.error(error)})
+  //   )    
+  // }
 }
 
   ngOnDestroy() {
