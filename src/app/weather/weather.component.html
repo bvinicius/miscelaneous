@@ -2,7 +2,7 @@
 <p class="subtitle" style="margin: 0">See the weather anywhere</p>
 <div class="container center">
     <mat-form-field class="padding" style="width: 100%" (keyup.enter)="fetchWeather($event.target.value)">
-      <input id="input" matInput placeholder="TYPE A CITY" (input)="onChange($event.target.value)">
+      <input id="input" matInput placeholder="TYPE A CITY" (input)="onChange($event.target.value)" [matAutocomplete]="auto" >
       <mat-autocomplete #auto="matAutocomplete">
         <mat-option *ngFor="let option of options" [value]="option">
           {{option}}
@@ -10,8 +10,10 @@
       </mat-autocomplete>
     </mat-form-field>
 
-    <h2 class="title">{{ city ? city.name + ", " + city.country : "" }}</h2>
-    <h3 class="subtitle">{{ city ? city.temperature + 'ºC. Feels like ' + city.feelsLike + 'ºC.' : '' }}</h3>
+    <div class="info-container" *ngIf="city">
+      <h2 class="title">{{ city.name + ", " + city.country }}</h2>
+      <h3 class="subtitle">{{ city.temperature + 'ºC. Feels like ' + city.feelsLike + 'ºC.' }}</h3>  
+    </div>
 
     <h3 class="subtitle">{{ city ? 'Today: ' + city.weather : "" }}</h3>
 </div>

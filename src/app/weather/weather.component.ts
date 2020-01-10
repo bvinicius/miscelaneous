@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http'
 import { Observable, Subscription } from 'rxjs';
 import { MatInput } from '@angular/material';
 import { LoaderService } from '../shared/loader.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-weather',
@@ -13,10 +14,11 @@ export class WeatherComponent implements OnInit {
   subscriptions: Subscription[] = []
   city: any
 
+  formControl = new FormControl()
   options: string[] = []
 
   @ViewChild(MatInput, {static: false}) input: MatInput;
-  constructor(private http: HttpClient, private loader: LoaderService) { }
+  constructor(private http: HttpClient, private loader: LoaderService) {}
 
   ngOnInit() {}
 
@@ -29,8 +31,8 @@ export class WeatherComponent implements OnInit {
     this.input.value = ''
 
     const term = city
-                .split(' ')
-                .join('+')
+                  .split(' ')
+                  .join('+')
 
     console.log(term)
     
@@ -43,7 +45,7 @@ export class WeatherComponent implements OnInit {
       })
       .subscribe((res:any) => {
         this.loader.stop()
-        console.log(res)
+        // console.log(res)
         this.city = {
           name: res.name,
           country: res.sys.country,
@@ -55,23 +57,15 @@ export class WeatherComponent implements OnInit {
   }
 
   onChange(value:string) {
-  // if (value.length % 3 === 0) {
-  //   const term = value.toLowerCase()
-  //   this.loader.start()
-  //   this.subscriptions.push(
-  //     this.http.get(`https://andruxnet-world-cities-v1.p.rapidapi.com/?query=${term}&searchby=city`, {
-  //       headers: {
-  //         "x-rapidapi-host": "andruxnet-world-cities-v1.p.rapidapi.com",
-  //         "x-rapidapi-key": "dac1bfeac6msh81fea4f48af0f77p162317jsn2d9f313ea36f"
-  //       }
-  //     })
-  //       .subscribe((res:any) => {
-  //         this.loader.stop()
-  //         console.log(res)
-  //       }, error => {console.error(error)})
-  //   )    
-  // }
-}
+    if (value.length >= 3) {
+      const term = value.toLowerCase();
+
+      this.http.get(`https://secure.geobytes.com/AutoCompleteCity?key=7c756203dbb38590a66e01a5a3e1ad96&q=${term}&sort=size&limit=5`)
+      .subscribe((res:any) => {
+        this.options = res
+      })
+    } 
+  }
 
   ngOnDestroy() {
     this.subscriptions.forEach(s => {s.unsubscribe()})
